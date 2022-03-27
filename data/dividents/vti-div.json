@@ -1,0 +1,26 @@
+{
+    "data": [
+    { "total_return": -10.97, "dividents": 0.63 },
+    { "total_return": -20.47, "dividents": 1.19 },
+    { "total_return": 30.75, "dividents": 1.68 },
+    { "total_return": 12.79, "dividents": 1.80 },
+    { "total_return": 6.31, "dividents": 1.78 },
+    { "total_return": 15.69, "dividents": 1.88 },
+    { "total_return": 5.37, "dividents": 1.86 },
+    { "total_return": -36.98, "dividents": 1.74 },
+    { "total_return": 28.89, "dividents": 2.50 },
+    { "total_return": 17.42, "dividents": 2.05 },
+    { "total_return": 0.97, "dividents": 1.91 },
+    { "total_return": 16.45, "dividents": 2.45 },
+    { "total_return": 33.45, "dividents": 2.30 },
+    { "total_return": 12.54, "dividents": 1.96 },
+    { "total_return": 0.36, "dividents": 1.96 },
+    { "total_return": 12.83, "dividents": 2.14 },
+    { "total_return": 21.21, "dividents": 2.05 },
+    { "total_return": -5.21, "dividents": 1.91 },
+    { "total_return": 30.67, "dividents": 2.29 },
+    { "total_return": 21.03, "dividents": 1.71 },
+    { "total_return": 25.67, "dividents": 1.51 }
+],
+    "start_year": 2001
+}

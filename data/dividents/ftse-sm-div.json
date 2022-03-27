@@ -1,0 +1,15 @@
+{
+    "data": [
+    { "total_return": 25.60, "dividents": 3.60 },
+    { "total_return": -19.63, "dividents": 2.48 },
+    { "total_return": 20.73, "dividents": 3.51 },
+    { "total_return": 16.60, "dividents": 3.10 },
+    { "total_return": -5.06, "dividents": 2.49 },
+    { "total_return": 4.26, "dividents": 2.99 },
+    { "total_return": 30.60, "dividents": 3.62 },
+    { "total_return": -18.47, "dividents": 2.24 },
+    { "total_return": 11.84, "dividents": 2.08 },
+    { "total_return": 13.07, "dividents": 3.03 }
+],
+    "start_year": 2010
+}
