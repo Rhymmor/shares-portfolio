@@ -1,4 +1,4 @@
-from typing import Any, Iterable, List, OrderedDict, Tuple
+from typing import Any, Iterable, List, Optional, OrderedDict, Tuple
 import numpy as np
 from numpy.typing import NDArray
 from src.domain.numbers_utils import FloatList
@@ -36,8 +36,8 @@ def get_correlation_table_view(stocks: OrderedDict[str, StockReturns]) -> List[L
 
     return corr_table
 
-def get_max_returns_from_same_year(data_list: Iterable[StockReturns]) -> NDArray[np.floating[Any]]:
-    max_first_year = get_max_first_year(data_list)
+def get_max_returns_from_same_year(data_list: Iterable[StockReturns], year: Optional[int] = None) -> NDArray[np.floating[Any]]:
+    max_first_year: int = year or get_max_first_year(data_list)
     return np.array([get_monthly_from_year(x, max_first_year) for x in data_list])
 
 def calc_returns_amount(amount: float, percent: float):
@@ -77,8 +77,12 @@ def calc_weighted_annual_std(data: OrderedDict[str, StockReturns], weights: Floa
     monthly = get_max_returns_from_same_year(data.values())
     return np.sqrt(weights_vec.dot(np.cov(monthly)).dot(weights_vec.transpose()) * 12)
 
-def calc_weighted_annual_returns(data: OrderedDict[str, StockReturns], weights: FloatList) -> Tuple[NDArray[np.floating[Any]], int]:
-    returns = np.array(get_max_returns_from_same_year(data.values()))
+def calc_weighted_annual_returns(
+    data: OrderedDict[str, StockReturns],
+    weights: FloatList,
+    from_year: Optional[int] = None
+) -> Tuple[NDArray[np.floating[Any]], int]:
+    returns = np.array(get_max_returns_from_same_year(data.values(), year=from_year))
     for i in range(0, len(returns)):
         for j in range(0, len(returns[0])):
             returns[i][j] *= weights[i]

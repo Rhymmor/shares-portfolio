@@ -1,4 +1,4 @@
-from typing import Callable, Dict, List, TypeVar
+from typing import Callable, Dict, List, Optional, TypeVar
 from src.data.shares import SHARES_INFO, SHARES_DATA
 from src.domain.distribution import DistributionsData, SharesDistribution
 from src.portfolio import calc_portfolio_returns, calc_portfolio_std, get_fund_distribution
@@ -15,9 +15,17 @@ def modify_distrib(default_distrib: SharesDistribution, modify_fn: Callable[[Sha
     modify_fn(distrib, arg)
     return distrib
 
-def calc_distributions_data(distribs: List[SharesDistribution], funds: List[Dict[str, float]], init_amount=1000) -> DistributionsData:
-    distributions_by_fund = [get_fund_distribution(funds, SHARES_INFO, x) for x in distribs]
-    distributions_returns = [calc_portfolio_returns(x, SHARES_DATA)[0] for x in distributions_by_fund]
+def calc_distributions_data(
+    distribs: Optional[List[SharesDistribution]],
+    funds: List[Dict[str, float]],
+    init_amount=1000,
+    from_year: Optional[int] = None
+) -> DistributionsData:
+    distributions_by_fund = [
+        get_fund_distribution(funds, SHARES_INFO, x) for x in distribs
+    ] if distribs else [get_fund_distribution(funds, SHARES_INFO)]
+
+    distributions_returns = [calc_portfolio_returns(x, SHARES_DATA, from_year=from_year)[0] for x in distributions_by_fund]
 
     return DistributionsData(
         funds_ratio=distributions_by_fund,
