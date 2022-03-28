@@ -1,6 +1,6 @@
 from dataclasses import dataclass
 from enum import Enum
-from typing import Optional
+from typing import Optional, Union
 
 class ShareType(Enum):
     Stock = "stock"
@@ -33,3 +33,4 @@ class BondInfo(ShareInfo):
     term: Term = Term.Long
     type: Optional[ShareType] = ShareType.Bond
 
+AnyShareInfo = Union[StockInfo, BondInfo]
