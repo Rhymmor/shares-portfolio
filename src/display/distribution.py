@@ -12,10 +12,9 @@ from src.plot_utils import get_monthly_data_range
 
 def display_distributions(
     distribs: List[SharesDistribution],
-    names: List[str],
-    funds: List[Dict[str, float]]
+    names: List[str]
 ):
-    distributions_data = calc_distributions_data(distribs=distribs, funds=funds)
+    distributions_data = calc_distributions_data(distribs=distribs)
 
     percent_columns = [[f'{round(x * 100, 2)}%' for x in distrib.values()] for distrib in distributions_data.funds_ratio]
     df = pd.DataFrame(np.array(percent_columns).transpose(), columns=names, index=list(distributions_data.funds_ratio[0].keys()))

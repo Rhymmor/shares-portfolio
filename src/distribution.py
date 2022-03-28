@@ -16,15 +16,11 @@ def modify_distrib(default_distrib: SharesDistribution, modify_fn: Callable[[Sha
     return distrib
 
 def calc_distributions_data(
-    distribs: Optional[List[SharesDistribution]],
-    funds: List[Dict[str, float]],
+    distribs: List[SharesDistribution],
     init_amount=1000,
     from_year: Optional[int] = None
 ) -> DistributionsData:
-    distributions_by_fund = [
-        get_fund_distribution(funds, SHARES_INFO, x) for x in distribs
-    ] if distribs else [get_fund_distribution(funds, SHARES_INFO)]
-
+    distributions_by_fund = [get_fund_distribution(x, SHARES_INFO) for x in distribs]
     distributions_returns = [calc_portfolio_returns(x, SHARES_DATA, from_year=from_year)[0] for x in distributions_by_fund]
 
     return DistributionsData(

@@ -1,7 +1,6 @@
 
 
 from collections import OrderedDict
-from typing import Dict, List, Optional
 from IPython.display import display
 import numpy as np
 import plotly.express as px
@@ -15,17 +14,15 @@ from src.statistics import calc_annual_geometric_mean, calc_returns_amount_list,
 
 
 def display_portfolio(
-    funds: List[Dict[str, float]],
+    distrib: SharesDistribution,
     extra_stocks: OrderedDict[str, StockReturns],
-    distrib: Optional[SharesDistribution] = None,
 ):
     names = ["Portfolio"]
     max_first_year = 1992
     init_amount = 1000
 
     distributions_data = calc_distributions_data(
-        distribs=[distrib] if distrib else None,
-        funds=funds,
+        distribs=[distrib],
         init_amount=init_amount,
         from_year=max_first_year
     )
@@ -44,11 +41,11 @@ def display_portfolio(
     display(df)
 
 
-    df = pd.DataFrame(np.array([
+    df2 = pd.DataFrame(np.array([
             [f'{distributions_data.annual_mean_returns[0]}%', *stocks_annual_mean],
             [f'{distributions_data.std[0]}%', *stocks_std_column]
         ]).transpose(), columns=["Mean ret.", "Std"], index=[*names, *extra_stocks.keys()])
-    display(df)
+    display(df2)
 
     df = pd.DataFrame(
         np.array([distributions_data.returns_amounts[0], *stock_amount_returns]).transpose(),

@@ -31,10 +31,11 @@ def get_stock_name(share: dict):
     return f'{share["region"].capitalize()} {share["cap"].capitalize()}-cap stocks'
 
 def get_fund_distribution(
-    funds: List[Dict[str, float]],
+    distrib: SharesDistribution,
     info: OrderedDict[str, Union[StockInfo, BondInfo]],
-    distrib: Optional[SharesDistribution] = None
 ) -> OrderedDict[str, float]:
+    funds, categories = distrib.funds, distrib.categories
+
     merged_funds: Dict[str, float] = {}
     for funds_type in funds:
         merged_funds = merged_funds | funds_type
@@ -46,29 +47,29 @@ def get_fund_distribution(
 
         fund_info = info[fund_name]
 
-        if distrib:
-            value *= distrib.by_type[getattr(fund_info, 'type')]
+        if categories:
+            value *= categories.by_type[getattr(fund_info, 'type')]
             if isinstance(fund_info, StockInfo):
-                value *= distrib.by_cap[fund_info.cap] * distrib.by_region[fund_info.region]
+                value *= categories.by_cap[fund_info.cap] * categories.by_region[fund_info.region]
             if isinstance(fund_info, BondInfo):
-                value *= distrib.by_term[fund_info.term]
+                value *= categories.by_term[fund_info.term]
 
         funds_distibution[fund_name] = value
 
     return funds_distibution
 
-def calc_portfolio_std(distribution: OrderedDict[str, float], data: OrderedDict[str, StockReturns]):
+def calc_portfolio_std(funds_distribution: OrderedDict[str, float], data: OrderedDict[str, StockReturns]):
     portfolio_data: Dict[str, StockReturns] = OrderedDict()
-    for fund_name in distribution.keys():
+    for fund_name in funds_distribution.keys():
         portfolio_data[fund_name] = data[fund_name]
-    return calc_weighted_annual_std(data = portfolio_data, weights=list(distribution.values()))
+    return calc_weighted_annual_std(data = portfolio_data, weights=list(funds_distribution.values()))
 
 def calc_portfolio_returns(
-    distribution: OrderedDict[str, float],
+    funds_distribution: OrderedDict[str, float],
     data: OrderedDict[str, StockReturns],
     from_year: Optional[int] = None
 ):
     portfolio_data: Dict[str, StockReturns] = OrderedDict()
-    for fund_name in distribution.keys():
+    for fund_name in funds_distribution.keys():
         portfolio_data[fund_name] = data[fund_name]
-    return calc_weighted_annual_returns(data = portfolio_data, weights=list(distribution.values()), from_year=from_year)
+    return calc_weighted_annual_returns(data = portfolio_data, weights=list(funds_distribution.values()), from_year=from_year)

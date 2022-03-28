@@ -1,14 +1,14 @@
 
 
 from dataclasses import dataclass, asdict
-from typing import Any, Dict, List, OrderedDict
+from typing import Any, Dict, List, Optional, OrderedDict
 import numpy as np
 from numpy.typing import NDArray
 
 from src.domain.share_type import Cap, Region, ShareType, Term
 
 @dataclass
-class SharesDistribution:
+class SharesCategoriesDistribution:
     by_type: Dict[ShareType, float]
     by_region: Dict[Region, float]
     by_cap: Dict[Cap, float]
@@ -18,6 +18,11 @@ class SharesDistribution:
         obj = asdict(self)
         for category in obj.values():
             assert(sum(category.values()) == 1)
+
+@dataclass
+class SharesDistribution:
+    funds: List[OrderedDict[str, float]]
+    categories: Optional[SharesCategoriesDistribution] = None
 
 @dataclass
 class DistributionsData:
