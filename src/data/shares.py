@@ -12,6 +12,10 @@ SHARES = OrderedDict({
         returns=get_returns_data("data/monthly-returns/vti-returns-monthly.txt"),
         info=StockInfo(region=Region.US, cap=Cap.Large),
     ),
+    "S&P 500": ShareData(
+        returns=get_returns_data("data/monthly-returns/s&p_500-returns.txt"),
+        info=StockInfo(region=Region.US, cap=Cap.Large),
+    ),
     "EAFE": ShareData(
         returns=get_returns_data("data/monthly-returns/eafe-returns-monthly.txt"),
         info=StockInfo(region=Region.ExUS, cap=Cap.Large),
