@@ -28,6 +28,10 @@ SHARES = OrderedDict({
         returns=get_returns_data("data/monthly-returns/russell_2000-returns-monthly.txt"),
         info=StockInfo(region=Region.US, cap=Cap.Small),
     ),
+    "IJS": ShareData(
+        returns=get_returns_data("data/monthly-returns/IJS-returns.txt"),
+        info=StockInfo(region=Region.US, cap=Cap.Small),
+    ),
     "EAFE Small-Cap": ShareData(
         returns=get_returns_data("data/monthly-returns/eafe-small-cap-return-monthly.txt"),
         info=StockInfo(region=Region.ExUS, cap=Cap.Small),
@@ -46,6 +50,10 @@ SHARES = OrderedDict({
     ),
     "BND": ShareData(
         returns=get_returns_data("data/monthly-returns/bnd-returns.txt"),
+        info=BondInfo(region=Region.US, term=Term.Long),
+    ),
+    "TIP": ShareData(
+        returns=get_returns_data("data/monthly-returns/TIP-returns.txt"),
         info=BondInfo(region=Region.US, term=Term.Long),
     ),
     "SHY": ShareData(

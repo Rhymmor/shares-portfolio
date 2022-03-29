@@ -12,3 +12,4 @@
 - [&check;] Automate notebook HTML view updates
 - [&check;] Separate notebook to several ones
 - [&check;] Create Github pages
+- Add Homepage to Github pages

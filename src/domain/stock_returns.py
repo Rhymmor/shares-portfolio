@@ -1,14 +1,15 @@
 from dataclasses import dataclass
-from typing import List
+
+from src.domain.numbers_utils import FloatList
 
 
 @dataclass
 class StockReturns:
-    annual: List[float]
+    annual: FloatList
     """Annual returns in percents"""
-    annual_infl_adj: List[float]
+    annual_infl_adj: FloatList
     """Annual returns in percents adjusted to annual inflation"""
-    monthly: List[float]
+    monthly: FloatList
     """Monthly returns in percents"""
     first_year: int
     """Year when returns starts"""

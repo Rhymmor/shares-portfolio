@@ -10,7 +10,7 @@ from src.domain.distribution import SharesDistribution
 from src.domain.stock_returns import StockReturns
 from src.distribution import calc_distributions_data
 from src.plot_utils import get_monthly_data_range
-from src.statistics import calc_annual_geometric_mean, calc_returns_amount_list, get_max_returns_from_same_year, get_stocks_std_view
+from src.statistics import calc_annual_geometric_mean, calc_returns_amount_list, get_correlation_table_view, get_max_returns_from_same_year, get_stocks_std_view
 
 
 def display_portfolio(
@@ -40,11 +40,26 @@ def display_portfolio(
     df = pd.DataFrame(np.array(percent_columns).transpose(), columns=names, index=list(distributions_data.funds_ratio[0].keys()))
     display(df)
 
+    corr_table = get_correlation_table_view(OrderedDict({
+        "Portfolio": StockReturns(
+            annual=[],
+            annual_infl_adj=[],
+            monthly=distributions_data.returns[0],
+            first_year=max_first_year,
+            last_year=2021
+        ),
+        **extra_stocks
+        }))
+
+    index = [*names, *extra_stocks.keys()]
+    splitter_column = ["|"] * len(index)
 
     df2 = pd.DataFrame(np.array([
             [f'{distributions_data.annual_mean_returns[0]}%', *stocks_annual_mean],
-            [f'{distributions_data.std[0]}%', *stocks_std_column]
-        ]).transpose(), columns=["Mean ret.", "Std"], index=[*names, *extra_stocks.keys()])
+            [f'{distributions_data.std[0]}%', *stocks_std_column],
+            splitter_column,
+            *corr_table
+        ]).transpose(), columns=["Mean ret.", "Std", "|", *names, *extra_stocks.keys()], index=index)
     display(df2)
 
     df = pd.DataFrame(
