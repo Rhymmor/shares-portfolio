@@ -1,4 +1,4 @@
-from typing import Callable, Dict, List, Optional, TypeVar
+from typing import Callable, List, Optional, TypeVar
 from src.data.shares import SHARES_INFO, SHARES_DATA
 from src.domain.distribution import DistributionsData, SharesDistribution
 from src.portfolio import calc_portfolio_returns, calc_portfolio_std, get_fund_distribution

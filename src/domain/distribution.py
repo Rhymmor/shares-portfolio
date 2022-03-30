@@ -1,9 +1,10 @@
 
 
 from dataclasses import dataclass, asdict
-from typing import Any, Dict, List, Optional, OrderedDict
+from typing import Any, Dict, List, Optional, OrderedDict, Union
 import numpy as np
 from numpy.typing import NDArray
+from src.data.shares import SHARES
 
 from src.domain.share_type import Cap, Region, ShareType, Term
 
@@ -16,13 +17,29 @@ class SharesCategoriesDistribution:
 
     def __post_init__(self):
         obj = asdict(self)
-        for category in obj.values():
-            assert(sum(category.values()) == 1)
+        for name, category in obj.items():
+            assert np.isclose(sum(category.values()),  1.), f'Sum in category "{name}" is not equal to 100% {sum(category.values()) * 100}%) for {category}'
+
+@dataclass
+class FundsDistribution:
+    funds: OrderedDict[str, float]
+
+    def __post_init__(self):
+        funds_sum = sum(self.funds.values())
+        assert np.isclose(funds_sum, 1.), f'A sum of funds is not equal to 100% (= {funds_sum * 100}%) for {self.funds}'
+
+        for fund in self.funds.keys():
+            assert fund in SHARES, f'No {fund} share in the global stocks dictionary'
+
 
 @dataclass
 class SharesDistribution:
-    funds: List[OrderedDict[str, float]]
+    shares: Union[FundsDistribution, List[FundsDistribution]]
     categories: Optional[SharesCategoriesDistribution] = None
+
+    def __post_init__(self):
+        if isinstance(self.shares, list):
+            assert self.categories is not None, 'If shares is list there should be categories'
 
 @dataclass
 class DistributionsData:

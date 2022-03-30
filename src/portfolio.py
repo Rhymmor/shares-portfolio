@@ -34,11 +34,13 @@ def get_fund_distribution(
     distrib: SharesDistribution,
     info: OrderedDict[str, Union[StockInfo, BondInfo]],
 ) -> OrderedDict[str, float]:
-    funds, categories = distrib.funds, distrib.categories
+    funds, categories = distrib.shares, distrib.categories
 
-    merged_funds: Dict[str, float] = {}
-    for funds_type in funds:
-        merged_funds = merged_funds | funds_type
+    merged_funds: OrderedDict[str, float] = OrderedDict() if isinstance(funds, list) else funds.funds
+
+    if isinstance(funds, list):
+        for funds_type in funds:
+            merged_funds = OrderedDict(merged_funds | funds_type.funds)
 
     funds_distibution: OrderedDict[str, float] = OrderedDict({})
 
