@@ -1,0 +1,24 @@
+{
+  "name": "shares-portfolio-website",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "eleventy --serve",
+    "build": "eleventy"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Rhymmor/shares-portfolio.git"
+  },
+  "author": "Rhymmor",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Rhymmor/shares-portfolio/issues"
+  },
+  "homepage": "https://github.com/Rhymmor/shares-portfolio#readme",
+  "devDependencies": {
+    "@11ty/eleventy": "^1.0.0"
+  }
+}
