@@ -1,6 +1,7 @@
-
-
-# Notebooks
+---
+title: Notebooks
+layout: base.njk
+---
 
 - [Historical data](./pages/historical-data.html) - an analysis on ETFs data from different sectors
 - [Famous portfolios](./pages/famous-portfolios.html) - comparing famous lazy portfolios with ETFs

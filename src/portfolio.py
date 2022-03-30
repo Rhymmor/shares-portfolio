@@ -1,7 +1,6 @@
 from typing import Dict, List, Optional, Union
 from collections import OrderedDict
 
-import numpy as np
 from src.domain.share_type import BondInfo, StockInfo
 from src.domain.distribution import SharesDistribution
 from src.domain.stock_returns import StockReturns
