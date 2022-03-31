@@ -40,11 +40,6 @@ jobs:
           node-version: "16.x"
       - run: npm ci
         working-directory: ./web
-      - name: Download notebook atrifacts
-        uses: actions/download-artifact@v3
-        with:
-          name: html-notebooks
-          path: ./docs
       - run: npm run build
         working-directory: ./web
       - name: Upload artifacts
