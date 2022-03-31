@@ -46,10 +46,9 @@ jobs:
       - name: Load cached node_modules
         id: cached-npm-dependencies
         uses: actions/cache@v3
-        working-directory: ./web
         with:
-          path: node_modules
-          key: venv-${{ runner.os }}-${{ hashFiles('**/package-lock.json') }}
+          path: web/node_modules
+          key: venv-${{ runner.os }}-${{ hashFiles('web/package-lock.json') }}
       - run: npm ci
         if: steps.cached-npm-dependencies.outputs.cache-hit != 'true'
         working-directory: ./web
