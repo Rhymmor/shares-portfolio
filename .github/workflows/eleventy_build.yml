@@ -1,9 +1,5 @@
 name: Eleventy Build
 
-defaults:
-  run:
-    working-directory: ./web
-
 on:
   push:
     branches:
