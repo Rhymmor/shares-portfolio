@@ -25,7 +25,7 @@ jobs:
           path: .venv
           key: venv-${{ runner.os }}-${{ hashFiles('**/poetry.lock') }}
       - name: Install Dependencies
-        if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
+        # if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
         run: poetry install
       - name: Prepare HTML notebooks
         run: poetry run jupyter nbconvert *.ipynb --to html --output-dir docs/pages
