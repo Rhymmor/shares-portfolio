@@ -25,7 +25,11 @@ jobs:
           path: .venv
           key: venv-${{ runner.os }}-${{ hashFiles('**/poetry.lock') }}
       - name: Use local virtualenv
-        run: poetry env use .venv/bin/python
+        run: |
+          ls
+          ls .venv
+          ls .venv/bin
+          poetry env use .venv/bin/python
       - name: Install Dependencies
         if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
         run: poetry install
