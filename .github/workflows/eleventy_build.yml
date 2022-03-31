@@ -62,8 +62,6 @@ jobs:
         with:
           name: html-notebooks
           path: ./docs
-      - run: npm run build
-        working-directory: ./web
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
