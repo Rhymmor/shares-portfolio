@@ -27,8 +27,12 @@ jobs:
       - name: Install Dependencies
         if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
         run: poetry install
+        env:
+          POETRY_VIRTUALENVS_PATH: .venv
       - name: Prepare HTML notebooks
         run: poetry run jupyter nbconvert *.ipynb --to html --output-dir docs/pages
+        env:
+          POETRY_VIRTUALENVS_PATH: .venv
       - name: Upload artifacts
         uses: actions/upload-artifact@v3
         with:
