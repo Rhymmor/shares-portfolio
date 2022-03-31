@@ -30,8 +30,10 @@ jobs:
           poetry config virtualenvs.create true
           poetry config virtualenvs.in-project true
           poetry install
+      - name: Run notebooks
+        run: ./scripts/run_notebooks.sh
       - name: Prepare HTML notebooks
-        run: poetry run jupyter nbconvert notebooks/*.ipynb --to html --output-dir docs/pages
+        run: ./scripts/convert_notebooks.sh
       - name: Upload artifacts
         uses: actions/upload-artifact@v3
         with:
