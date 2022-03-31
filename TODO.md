@@ -3,8 +3,9 @@
 - [&check;] Variate portfolio by region, cap size
 - [&check;] Calculate correlations for Portfolio vs. S&P 500/US Treasure Bonds
 - Add distribution by growth/value stocks
-- Research current P/E, P/B by sectors
+- Research current P/E, P/B, Buffett Indicator,  by sectors
 - Find data before 1992
+
 
 ### Technical
 

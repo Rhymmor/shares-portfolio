@@ -1,5 +1,3 @@
-
-
 from dataclasses import dataclass, asdict
 from typing import Any, Dict, List, Optional, OrderedDict, Union
 import numpy as np
@@ -7,6 +5,7 @@ from numpy.typing import NDArray
 from src.data.shares import SHARES
 
 from src.domain.share_type import Cap, Region, ShareType, Term
+
 
 @dataclass
 class SharesCategoriesDistribution:
@@ -18,7 +17,10 @@ class SharesCategoriesDistribution:
     def __post_init__(self):
         obj = asdict(self)
         for name, category in obj.items():
-            assert np.isclose(sum(category.values()),  1.), f'Sum in category "{name}" is not equal to 100% {sum(category.values()) * 100}%) for {category}'
+            assert np.isclose(
+                sum(category.values()), 1.0
+            ), f'Sum in category "{name}" is not equal to 100% {sum(category.values()) * 100}%) for {category}'
+
 
 @dataclass
 class FundsDistribution:
@@ -26,10 +28,12 @@ class FundsDistribution:
 
     def __post_init__(self):
         funds_sum = sum(self.funds.values())
-        assert np.isclose(funds_sum, 1.), f'A sum of funds is not equal to 100% (= {funds_sum * 100}%) for {self.funds}'
+        assert np.isclose(
+            funds_sum, 1.0
+        ), f"A sum of funds is not equal to 100% (= {funds_sum * 100}%) for {self.funds}"
 
         for fund in self.funds.keys():
-            assert fund in SHARES, f'No {fund} share in the global stocks dictionary'
+            assert fund in SHARES, f"No {fund} share in the global stocks dictionary"
 
 
 @dataclass
@@ -39,7 +43,8 @@ class SharesDistribution:
 
     def __post_init__(self):
         if isinstance(self.shares, list):
-            assert self.categories is not None, 'If shares is list there should be categories'
+            assert self.categories is not None, "If shares is list there should be categories"
+
 
 @dataclass
 class DistributionsData:

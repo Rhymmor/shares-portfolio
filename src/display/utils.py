@@ -1,8 +1,7 @@
-
-
 from typing import Any, List
 from ipywidgets import widgets, Layout
 from IPython import display
+
 
 def display_inline(*tables: Any):
     table_widgets: List[widgets.Output] = []
@@ -14,11 +13,7 @@ def display_inline(*tables: Any):
             display.display(tables[i])
             tables[i].info()
 
-    box_layout = Layout(display='flex',
-        flex_flow='row',
-        justify_content='space-around',
-        width='auto'
-    )
+    box_layout = Layout(display="flex", flex_flow="row", justify_content="space-around", width="auto")
 
     hbox = widgets.HBox(table_widgets, layout=box_layout)  # type: ignore
 
