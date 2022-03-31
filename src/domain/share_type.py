@@ -25,7 +25,7 @@ class Term(Enum):
 
 @dataclass
 class ShareInfo:
-    type: ShareType = ShareType.Stock
+    type: Optional[ShareType]
     region: Region = Region.US
 
 
