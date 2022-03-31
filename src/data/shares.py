@@ -9,59 +9,59 @@ from src.domain.share_type import AnyShareInfo, StockInfo, Region, Cap, Term, Bo
 
 SHARES = OrderedDict({
     "VTI": ShareData(
-        returns=get_returns_data("data/monthly-returns/vti-returns-monthly.txt"),
+        returns=get_returns_data("../data/monthly-returns/vti-returns-monthly.txt"),
         info=StockInfo(region=Region.US, cap=Cap.Large),
     ),
     "VTV": ShareData(
-        returns=get_returns_data("data/monthly-returns/VTV-returns.txt"),
+        returns=get_returns_data("../data/monthly-returns/VTV-returns.txt"),
         info=StockInfo(region=Region.US, cap=Cap.Large),
     ),
     "S&P 500": ShareData(
-        returns=get_returns_data("data/monthly-returns/s&p_500-returns.txt"),
+        returns=get_returns_data("../data/monthly-returns/s&p_500-returns.txt"),
         info=StockInfo(region=Region.US, cap=Cap.Large),
     ),
     "EAFE": ShareData(
-        returns=get_returns_data("data/monthly-returns/eafe-returns-monthly.txt"),
+        returns=get_returns_data("../data/monthly-returns/eafe-returns-monthly.txt"),
         info=StockInfo(region=Region.ExUS, cap=Cap.Large),
     ),
     "VUG": ShareData(
-        returns=get_returns_data("data/monthly-returns/vug-returns.txt"),
+        returns=get_returns_data("../data/monthly-returns/vug-returns.txt"),
         info=StockInfo( region=Region.US, cap=Cap.Large),
     ),
     "Russell 2000": ShareData(
-        returns=get_returns_data("data/monthly-returns/russell_2000-returns-monthly.txt"),
+        returns=get_returns_data("../data/monthly-returns/russell_2000-returns-monthly.txt"),
         info=StockInfo(region=Region.US, cap=Cap.Small),
     ),
     "IJS": ShareData(
-        returns=get_returns_data("data/monthly-returns/IJS-returns.txt"),
+        returns=get_returns_data("../data/monthly-returns/IJS-returns.txt"),
         info=StockInfo(region=Region.US, cap=Cap.Small),
     ),
     "EAFE Small-Cap": ShareData(
-        returns=get_returns_data("data/monthly-returns/eafe-small-cap-return-monthly.txt"),
+        returns=get_returns_data("../data/monthly-returns/eafe-small-cap-return-monthly.txt"),
         info=StockInfo(region=Region.ExUS, cap=Cap.Small),
     ),
     "VNQ (REIT)": ShareData(
-        returns=get_returns_data("data/monthly-returns/vnq-returns.txt"),
+        returns=get_returns_data("../data/monthly-returns/vnq-returns.txt"),
         info=StockInfo(region=Region.US, cap=Cap.Large),
     ),
     "GLD": ShareData(
-        returns=get_returns_data("data/monthly-returns/gld-returns.txt"),
+        returns=get_returns_data("../data/monthly-returns/gld-returns.txt"),
         info=StockInfo(region=Region.US, cap=Cap.Large),
     ),
     "DBC": ShareData(
-        returns=get_returns_data("data/monthly-returns/dbc-returns.txt"),
+        returns=get_returns_data("../data/monthly-returns/dbc-returns.txt"),
         info=StockInfo(region=Region.US, cap=Cap.Large),
     ),
     "BND": ShareData(
-        returns=get_returns_data("data/monthly-returns/bnd-returns.txt"),
+        returns=get_returns_data("../data/monthly-returns/bnd-returns.txt"),
         info=BondInfo(region=Region.US, term=Term.Long),
     ),
     "TIP": ShareData(
-        returns=get_returns_data("data/monthly-returns/TIP-returns.txt"),
+        returns=get_returns_data("../data/monthly-returns/TIP-returns.txt"),
         info=BondInfo(region=Region.US, term=Term.Long),
     ),
     "SHY": ShareData(
-        returns=get_returns_data("data/monthly-returns/shy-returns.txt"),
+        returns=get_returns_data("../data/monthly-returns/shy-returns.txt"),
         info=BondInfo(region=Region.US, term=Term.Short),
     ),
 })

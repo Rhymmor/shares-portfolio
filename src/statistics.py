@@ -4,7 +4,7 @@ from numpy.typing import NDArray
 from src.domain.numbers_utils import FloatList
 from src.domain.stock_returns import StockReturns
 
-def get_monthly_from_year(data: StockReturns, from_year: int) -> List[float]:
+def get_monthly_from_year(data: StockReturns, from_year: int) -> FloatList:
     if data.first_year > from_year:
         return data.monthly
     if data.last_year < from_year:
