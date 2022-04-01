@@ -1,0 +1,67 @@
+ 	5-Year Bonds	US Large Market Stocks	US Large Value Stocks	US Small Market Stocks	US Small Value Stocks	Foreign Large Market Stocks	Foreign Large Value Stocks	Foreign Small Market Stocks
+1973	6.3	-14.7	-2.8	-36.1	-26.0	-14.9	-14.9	-13.7
+1974	9.4	-26.5	-22.4	-28.8	-18.1	-23.2	-23.2	-28.6
+1975	7.5	37.2	51.9	56.7	54.5	35.4	49.7	49.9
+1976	13.2	23.9	45.0	48.3	53.6	2.5	6.7	11.5
+1977	2.2	-7.2	0.8	20.1	21.8	18.0	33.2	74.1
+1978	5.5	6.6	6.6	20.5	21.8	32.6	42.2	65.5
+1979	10.7	18.4	23.8	40.8	38.0	4.8	4.4	-0.8
+1980	8.0	32.4	16.5	36.8	29.1	22.6	18.0	35.5
+1981	21.7	-4.9	11.2	2.5	10.5	-2.3	13.6	-4.7
+1982	31.3	21.4	27.4	25.2	37.7	-1.9	2.5	0.8
+1983	7.2	22.5	26.8	30.4	44.2	23.7	31.5	32.4
+1984	9.1	6.3	14.1	-4.9	5.1	7.4	7.6	10.1
+1985	23.5	32.2	29.5	30.1	34.7	56.2	67.3	60.1
+1986	17.0	18.5	20.4	6.7	16.9	69.4	70.2	50.1
+1987	3.3	5.2	2.3	-9.1	-6.3	24.6	31.2	70.6
+1988	6.3	16.8	24.6	22.4	28.8	28.3	33.5	26.0
+1989	9.5	31.5	28.4	15.9	19.7	10.5	24.7	29.3
+1990	10.8	-3.2	-13.9	-20.8	-20.8	-23.4	-15.6	-16.8
+1991	14.6	30.1	29.8	48.1	39.4	15.9	12.3	7.1
+1992	7.3	7.3	21.2	20.0	29.9	-13.1	-3.1	-18.4
+1993	8.3	9.6	20.2	13.7	25.8	25.9	47.2	33.5
+1994	-3.2	1.3	-4.5	-1.3	1.2	5.3	8.8	12.4
+1995	9.6	37.1	38.4	30.2	29.3	13.1	11.5	0.5
+1996	6.6	22.6	20.2	17.7	22.3	6.3	7.8	2.6
+1997	6.4	33.1	28.1	24.2	30.8	5.5	-3.1	-23.7
+1998
+5.4
+28.7
+12.0
+-5.5
+-7.3
+20.3
+14.9
+8.2
+Annual Return
+9.7
+13.5
+16.3
+13.0
+17.7
+12.2
+16.3
+14.6
+Annual Standard Deviation
+7.1
+17.0
+18.1
+23.5
+21.9
+21.9
+23.7
+30.0
+
+
+
+Notes:
+5-Year Bonds, Jan. 1973-May 1987: Simulation using U.S. Gov't instruments, June 1987-present: DFA Five-Year Fixed Income Portfolio net of all fees;
+20-Year Bonds, Jan. 1973-present: 20-Year U.S. Government bonds; U.S. Large Growth Stocks,Fama-French US Large Growth Simulated Strategy;
+U.S. Large Market, S&P 500; U.S. Large Value stocks, Jan. 1973-March 1993: Fama-French Large Cap Value Strategy (simulates DFA's hold range and estimated trading costs), Apr. 1993-present: DFA U.S. Large Cap Value Portfolio net of all fees;
+U.S. Small Growth Stocks, Fama-French US Small Growth Simulated Strategy; U.S. Small Market, Jan. 1973-March 1992: CRSP Database deciles 6-10, Apr. 1992-present: DFA U.S. 6-10 Small Company Portfolio net of all fees;
+U.S. Small Value, Jan. 1973-March 1993: Fama-French Small Cap Value Strategy simulates DFA's hold range and estimated trading costs), Apr. 1993-present: DFA U.S. 6-10 Value Portfolio net of all fees;
+Foreign Large Market, Jan. 1973-present: MS EAFE index;
+Foreign Large Value Stocks, Jan. 1973-Dec. 1974: MS EAFE index,
+    Jan. 1975-March 1993: Fama-French International High Book-to-Market Value-weighted unhedged $ (top 30% BtM, simulated DFA strategy, maximum Japan 38%),
+    Apr. 1993-June 1993 DFA Int'l High Book-to-Market portfolio, Jul. 1993-present: DFA Int'l Value Portfolio net of all fees;
+Foreign Small Market Stocks, Jan. 1973-Sept. 1996: DFA International Small Company Strategy, Oct. 1996-present: DFA International Small Company Portfolio net of all fees.
