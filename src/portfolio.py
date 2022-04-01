@@ -4,7 +4,7 @@ from collections import OrderedDict
 from src.domain.share_type import BondInfo, StockInfo
 from src.domain.distribution import SharesDistribution
 from src.domain.stock_returns import StockReturns
-from src.statistics import calc_weighted_annual_std, calc_weighted_annual_returns
+from src.statistics import calc_weighted_annual_std, calc_weighted_monthly_returns
 
 
 def share_to_percent(share: float):
@@ -61,7 +61,7 @@ def get_fund_distribution(
 
 
 def calc_portfolio_std(funds_distribution: OrderedDict[str, float], data: OrderedDict[str, StockReturns]):
-    portfolio_data: Dict[str, StockReturns] = OrderedDict()
+    portfolio_data: OrderedDict[str, StockReturns] = OrderedDict()
     for fund_name in funds_distribution.keys():
         portfolio_data[fund_name] = data[fund_name]
     return calc_weighted_annual_std(data=portfolio_data, weights=list(funds_distribution.values()))
@@ -72,10 +72,10 @@ def calc_portfolio_returns(
     data: OrderedDict[str, StockReturns],
     from_year: Optional[int] = None,
 ):
-    portfolio_data: Dict[str, StockReturns] = OrderedDict()
+    portfolio_data: OrderedDict[str, StockReturns] = OrderedDict()
     for fund_name in funds_distribution.keys():
         portfolio_data[fund_name] = data[fund_name]
-    return calc_weighted_annual_returns(
+    return calc_weighted_monthly_returns(
         data=portfolio_data,
         weights=list(funds_distribution.values()),
         from_year=from_year,

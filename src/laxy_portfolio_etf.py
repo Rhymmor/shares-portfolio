@@ -1,5 +1,4 @@
 from functools import reduce
-from dataclasses import dataclass
 from typing import List, TypeVar
 
 from src.domain.stock_returns import StockReturns

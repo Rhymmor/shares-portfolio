@@ -1,5 +1,4 @@
 from collections import OrderedDict
-from typing import Dict, Optional
 from src.domain.share_data import ShareData
 from src.domain.stock_returns import StockReturns
 from src.laxy_portfolio_etf import get_returns_data

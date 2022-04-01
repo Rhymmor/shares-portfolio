@@ -17,6 +17,7 @@ from src.statistics import (
     calc_returns_amount_list,
     get_correlation_table_view,
     get_max_returns_from_same_year,
+    get_stocks_std,
     get_stocks_std_view,
 )
 
@@ -102,8 +103,9 @@ def display_correlation_table(
     extra_stocks: OrderedDict[str, StockReturns],
     max_first_year: int = DEFAULT_FIRST_YEAR,
 ):
-    stocks_annual_mean = [f"{round(calc_annual_geometric_mean(x), 2)}%" for x in extra_stocks.values()]
-    stocks_std_column = get_stocks_std_view(extra_stocks)
+    stocks_annual_mean = [calc_annual_geometric_mean(x) for x in extra_stocks.values()]
+    stocks_std = get_stocks_std(extra_stocks)
+
     corr_table = get_correlation_table_view(
         OrderedDict(
             {
@@ -121,17 +123,23 @@ def display_correlation_table(
 
     index = [*names, *extra_stocks.keys()]
     splitter_column = ["|"] * len(index)
+    stocks_annual_mean_column = [f"{round(x, 2)}%" for x in stocks_annual_mean]
+    stocks_std_column = [f"{round(x, 2)}%" for x in stocks_std]
+
+    stocks_sharpe_ratio = [round(x, 2) for x in np.divide(stocks_annual_mean, stocks_std)]
+    portfolio_sharpe_ratio = round(distributions_data.annual_mean_returns[0] / distributions_data.std[0], 2)
 
     df2 = pd.DataFrame(
         np.array(
             [
-                [f"{distributions_data.annual_mean_returns[0]}%", *stocks_annual_mean],
+                [f"{distributions_data.annual_mean_returns[0]}%", *stocks_annual_mean_column],
                 [f"{distributions_data.std[0]}%", *stocks_std_column],
+                [f"{portfolio_sharpe_ratio}", *stocks_sharpe_ratio],
                 splitter_column,
                 *corr_table,
             ]
         ).transpose(),
-        columns=["Mean ret.", "Std", "|", *names, *extra_stocks.keys()],
+        columns=["Mean ret.", "Std", "Sharpe", "|", *names, *extra_stocks.keys()],
         index=index,
     )
     display(df2)

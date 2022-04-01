@@ -63,26 +63,30 @@ def from_monthly_std_to_annual(month_std: float) -> float:
     return month_std * np.sqrt(12)
 
 
+def get_stocks_std(stocks: OrderedDict[str, StockReturns]) -> List[float]:
+    return [from_monthly_std_to_annual(np.std(x.monthly)) for x in stocks.values()]
+
+
 def get_stocks_std_view(stocks: OrderedDict[str, StockReturns]) -> List[str]:
-    return [f"{round(from_monthly_std_to_annual(np.std(x.monthly)), 2)}%" for x in stocks.values()]
+    return [f"{round(x, 2)}%" for x in get_stocks_std(stocks)]
 
 
 def calc_annual_geometric_mean(stock: StockReturns) -> float:
-    returns = 1
+    returns: float = 1
     for annual_percent in stock.annual:
         returns *= 1 + annual_percent / 100
 
-    returns: float = np.power(returns, 1.0 / len(stock.annual))
-    return (returns - 1) * 100
+    mean: float = np.power(returns, 1.0 / len(stock.annual))
+    return (mean - 1) * 100
 
 
 def calc_annual_geometric_mean_from_monthly(monthly_returns: FloatList) -> float:
-    returns = 1
+    returns: float = 1
     for month_percent in monthly_returns:
         returns *= 1 + month_percent / 100
 
-    returns: float = np.power(returns, 12.0 / len(monthly_returns))
-    return (returns - 1) * 100
+    mean: float = np.power(returns, 12.0 / len(monthly_returns))
+    return (mean - 1) * 100
 
 
 def calc_weighted_annual_std(data: OrderedDict[str, StockReturns], weights: FloatList) -> float:
@@ -91,7 +95,7 @@ def calc_weighted_annual_std(data: OrderedDict[str, StockReturns], weights: Floa
     return np.sqrt(weights_vec.dot(np.cov(monthly)).dot(weights_vec.transpose()) * 12)
 
 
-def calc_weighted_annual_returns(
+def calc_weighted_monthly_returns(
     data: OrderedDict[str, StockReturns],
     weights: FloatList,
     from_year: Optional[int] = None,
